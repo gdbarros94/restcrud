@@ -7,6 +7,17 @@ function routeRequest($pdo, $dbname) {
     $path = $uriParts[0];
     $method = $_SERVER['REQUEST_METHOD'];
 
+    if ($path === 'database' && $method === 'GET') {
+        try {
+            // Chama a função para obter tabelas e relações do banco de dados
+            $result = getTablesAndRelations($pdo, $dbname);
+            echo json_encode($result);
+        } catch (Exception $e) {
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+        return;
+    }
+
     if (!empty($path)) {
         $tableName = explode('/', $path)[0];
 
