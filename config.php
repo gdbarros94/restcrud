@@ -1,19 +1,25 @@
 <?php
 // config.php
 
-// 1. Configuração do banco de dados
-$host = 'alunostds.dev.br:3308';
-$dbname = 'app_user';
-$username = 'app_user';
-$password = 'QWxVbk9zVERz';
+class DatabaseConfig {
+    private $host = 'alunostds.dev.br:3308';
+    private $dbname = 'app_user';
+    private $username = 'app_user';
+    private $password = 'QWxVbk9zVERz';
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die(json_encode(['error' => 'Erro na conexão: ' . $e->getMessage()]));
+    public function connect() {
+        try {
+            $pdo = new PDO("mysql:host={$this->host};dbname={$this->dbname}", $this->username, $this->password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            return $pdo;
+        } catch (PDOException $e) {
+            die(json_encode(['error' => 'Erro na conexão: ' . $e->getMessage()]));
+        }
+    }
 }
 
-// Definindo o tipo de resposta
 header("Content-Type: application/json");
+
+$databaseConfig = new DatabaseConfig();
+$pdo = $databaseConfig->connect();
