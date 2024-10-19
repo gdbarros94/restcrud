@@ -1,0 +1,4 @@
+RewriteEngine On
+
+# Roteamento para index.php para qualquer requisição
+RewriteRule ^(.*)$ index.php [QSA,L]
