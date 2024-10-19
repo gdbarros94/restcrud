@@ -115,6 +115,16 @@ As respostas da API serão sempre retornadas no formato JSON. Em caso de erro, a
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
+  ### TODO 
+  - [ ] Adicionar endpoint /database que retorna objeto com todas as tabelas do banco, seus campos e os tipos e suas relações.
+  - [x] Separar os arquivos / eliminar app monolito
+  - [x] Autenticação
+  - [ ] Transformar a aplicação para orientação a objetos
+  - [ ] Transformar a aplicação para ser escalavel
+  - [ ] Adaptar aplicação para funcionar com sqlite também e identificar audomaticamente ou via troca de parametro em variavel
+  - [ ] Frontend
+  - [ ] Appmobile
+
 ## Licença
 
 Este projeto está licenciado sob a MIT License. Veja o arquivo `LICENSE` para mais detalhes.
